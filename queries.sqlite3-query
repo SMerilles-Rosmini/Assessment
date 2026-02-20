@@ -7,3 +7,8 @@ SELECT * FROM Products;
 SELECT Products.product_id, manufacturers.name, Products.image_url 
 FROM Products
 JOIN manufacturers ON manufacturers.manufacturer_id = Products.product_id;
+
+-- One violin based on id
+SELECT * FROM Products 
+JOIN manufacturers ON manufacturers.manufacturer_id=Products.manufacturer_id
+WHERE Products.product_id = 2;

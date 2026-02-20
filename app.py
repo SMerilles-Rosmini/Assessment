@@ -35,10 +35,13 @@ def home():
     return str(results)
 
 @app.route("/violin/<int:id>/")
-def violin():
+def violin(id):
     # just one violin
-    return
-
+    sql = """SELECT * FROM Products 
+            JOIN manufacturers ON manufacturers.manufacturer_id=Products.manufacturer_id
+            WHERE Products.product_id = ?;"""
+    result = query_db(sql, (id,), True)
+    return str(result)
 
 
 if __name__ == '__main__':
