@@ -1,0 +1,9 @@
+-- database: ./Database.db
+
+-- Everything
+SELECT * FROM Products;
+
+-- ID, manufacturer, image url
+SELECT Products.product_id, manufacturers.name, Products.image_url 
+FROM Products
+JOIN manufacturers ON manufacturers.manufacturer_id = Products.product_id;

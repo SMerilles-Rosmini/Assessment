@@ -27,10 +27,19 @@ def query_db(query, args=(), one=False):
 
 @app.route('/')
 def home():
-    #home page - ID, manufacturer
-    sql = 'SELECT * FROM Products;'
+    #home page - ID, manufacturer, image URL
+    sql = """SELECT Products.product_id, manufacturers.name, Products.image_url 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.product_id;"""
     results = query_db(sql)
     return str(results)
+
+@app.route("/violin/<int:id>/")
+def violin():
+    # just one violin
+    return
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
