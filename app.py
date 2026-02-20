@@ -34,7 +34,7 @@ def home():
     results = query_db(sql)
     return str(results)
 
-@app.route("/violin/<int:id>/")
+@app.route("/product/<int:id>/")
 def product(id):
     # just one product
     sql = """SELECT * FROM Products 
