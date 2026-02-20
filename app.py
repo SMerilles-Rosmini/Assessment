@@ -35,8 +35,8 @@ def home():
     return str(results)
 
 @app.route("/violin/<int:id>/")
-def violin(id):
-    # just one violin
+def product(id):
+    # just one product
     sql = """SELECT * FROM Products 
             JOIN manufacturers ON manufacturers.manufacturer_id=Products.manufacturer_id
             WHERE Products.product_id = ?;"""
