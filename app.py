@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, g
+from flask import Flask, g, render_template
 
 DATABASE = 'Database.db'
 
@@ -32,7 +32,7 @@ def home():
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.product_id;"""
     results = query_db(sql)
-    return str(results)
+    return render_template("layouts/index.html")
 
 @app.route("/product/<int:id>/")
 def product(id):
