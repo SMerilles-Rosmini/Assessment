@@ -32,7 +32,8 @@ def home():
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.product_id;"""
     results = query_db(sql)
-    return render_template("layouts/index.html")
+    return render_template("home_layout.html")
+    # return str(results)
 
 @app.route("/product/<int:id>/")
 def product(id):
