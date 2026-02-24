@@ -21,3 +21,32 @@ header{
     padding: 0;
     z-index: 1;
 }
+
+.w3-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 10px 10px;
+  
+
+}
+
+.w3-input{
+    margin-top: 20px;
+    width: 50%;
+    height: 10%;
+}
+
+.material-symbols-outlined{
+    margin-top: 20px;
+    
+}
+
+.w3-bar-item:hover{
+    color: lightgray;
+    background-color: #6a381f;
+
+}
+
+div{
+    display: inline;
+}
