@@ -4,9 +4,9 @@
 SELECT * FROM Products;
 
 -- ID, manufacturer, image url
-SELECT Products.product_id, manufacturers.name, Products.image_url 
+SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
 FROM Products
-JOIN manufacturers ON manufacturers.manufacturer_id = Products.product_id;
+JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id;
 
 -- All violins based on product type
 SELECT * FROM Products 
