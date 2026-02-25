@@ -1,12 +1,12 @@
-{% extends "templates\layout.html" %}
+{% extends "layout.html" %}
 
 {% block body %}
 <div class="three-column">
-    {% for products in results %}
-    <a href="{{ url_for('product', id=Products[0])}}">
+    {% for product in results %}
+    <a href="{{ url_for('product', id=product[0]) }}">
         <div class="w3-card-4">
-            <h1>{{Products[1]}}</h1>
-            <img src="{{ Products[2]}}" alt="{{Products[1]}}">
+            <h1>{{ product[0] }}</h1>
+            <img src="{{ product[4] }}" alt="{{ product[0] }}">
         </div>
     </a>
     {% endfor %}
