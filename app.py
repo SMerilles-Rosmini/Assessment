@@ -36,7 +36,7 @@ def home():
     # return str(results)
 
 @app.route("/products/Violins")
-def product():
+def Violins():
     # just one product
     sql = """SELECT * FROM Products 
         WHERE Products.product_type = 'Violin';"""
