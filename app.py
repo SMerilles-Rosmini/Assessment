@@ -7,14 +7,14 @@ DATABASE = 'Database.db'
 app = Flask(__name__)
 
 def get_db():
-    db = getattr(g,'_database', None)
+    db = getattr(g,'_Database', None)
     if db is None:
-        db = g._database = sqlite3.connect(DATABASE)
+        db = g._Database = sqlite3.connect(DATABASE)
     return db
 
 @app.teardown_appcontext
 def close_connection(exception):
-    db = getattr(g, '_database', None)
+    db = getattr(g, '_Database', None)
     if db is not None:
         db.close()
 
@@ -32,16 +32,16 @@ def home():
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.product_id;"""
     results = query_db(sql)
-    return render_template("home_layout.html")
+    return render_template("templates\products.html", results=results)
     # return str(results)
 
-@app.route("/product/<int:id>/")
+@app.route("/products/Violins")
 def product(id):
     # just one product
     sql = """SELECT * FROM Products 
-            JOIN manufacturers ON manufacturers.manufacturer_id=Products.manufacturer_id
-            WHERE Products.product_id = ?;"""
+        WHERE Products.product_type = 'Violin';"""
     result = query_db(sql, (id,), True)
+    # return render_template("products.html", result=result)
     return str(result)
 
 

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart" />  
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap">
-    <title>Home Page</title>
+    <title>layout Page</title>
 </head>
 <body >
     <!-- Shared Header Bar and Navbar -->   
@@ -20,20 +20,21 @@
         </span>
         </a>
       </div>
+    </header>
       <div class=" w3-bar navbar ">
           <a href="#" class="w3-bar-item w3-button button ">Home</a>
           <a href="#" class="w3-bar-item w3-button button ">Link 1</a>
           <div class="w3-dropdown-hover">
-            <button class="w3-button button ">Dropdown</button>
+            <button class="w3-button button ">Products</button>
             <div class="w3-dropdown-content w3-bar-block w3-card-4">
-              <a href="#" class="w3-bar-item w3-button button">Link 1</a>
+              <a href="#" class="w3-bar-item w3-button button">Violins</a>
               <a href="#" class="w3-bar-item w3-button button ">Link 2</a>
               <a href="#" class="w3-bar-item w3-button button ">Link 3</a>
             </div>
           </div>
           
         </div>
-    </header>
+   
     {% block body %}
     {% endblock %}
 </body>

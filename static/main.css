@@ -1,14 +1,19 @@
 body,h1,h2,h3,h4,h5,h6 {font-family: NewsReader, sans-serif;}
-
+/* Header and Navbar */
 header{
     background-color: #6E0D25;
     color:white;
 }
 
 .navbar{
+    display: flex;
+    justify-content: space-between;
     background-color: #6E0D25;
     color:white;
+    text-decoration: none;
+    border: none;
 }
+
 
 .w3-dropdown-content {
     cursor: auto;
@@ -21,6 +26,17 @@ header{
     padding: 0;
     z-index: 1;
 }
+
+.w3-button:hover{
+    color:white!important;
+    background-color:#80122d!important
+}
+
+.w3-dropdown-hover:hover > .w3-button:first-child,.w3-dropdown-click:hover > .w3-button:first-child{
+    background-color:#80122d;
+    color:white
+}
+
 
 .w3-container {
     display: flex;
@@ -41,12 +57,16 @@ header{
     
 }
 
-.w3-bar-item:hover{
-    color: lightgray;
-    background-color: #6a381f;
+/* Products page */
 
+.three-column{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2em;
 }
 
-div{
-    display: inline;
+
+/* All images */
+img{
+    width: 100%;
 }
