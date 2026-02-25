@@ -65,13 +65,20 @@ header{
     gap: 2em;
     padding: 10px 10px 10px 10px;
     margin: 10px 10px 10px 10px;
+
     
 }
 
+
+.w3-card-4{
+    width: 500px;
+    height: auto;
+}
 .product_name{
     font-size: 20px;
     text-decoration: none;
-    
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
 }
 
 /* All images */
