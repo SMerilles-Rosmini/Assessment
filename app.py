@@ -30,19 +30,21 @@ def home():
     #home page - ID, manufacturer, image URL
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
-            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id;"""
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type = 'Accessory';"""
     results = query_db(sql)
     return render_template("home.html", results=results)
     # return str(results)
 
-@app.route("/products/Violins")
-def Violins():
-    # just one product
-    sql = """SELECT * FROM Products 
-        WHERE Products.product_type = 'Violin';"""
+@app.route("/products")
+def products():
+    # products page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id;"""
     result = query_db(sql)
-    # return render_template("products.html", result=result)
-    return str(result)
+    return render_template("products.html", result=result)
+
 
 
 if __name__ == '__main__':
