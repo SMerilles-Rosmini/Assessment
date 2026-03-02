@@ -36,14 +36,14 @@ def home():
     return render_template("home.html", results=results)
     # return str(results)
 
-@app.route("/products")
+@app.route("/products/")
 def products():
     # products page - ID, manufacturer, image url
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id;"""
-    result = query_db(sql)
-    return render_template("products.html", result=result)
+    results = query_db(sql)
+    return render_template("products.html", results=results)
 
 
 
