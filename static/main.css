@@ -34,6 +34,7 @@ header{
     top: 0;
     width: 100%;
     min-height: auto;
+    z-index: 3;
 
 }
 
@@ -44,6 +45,7 @@ header{
     color:white;
     text-decoration: none;
     border: none;
+    
 }
 
 
@@ -56,7 +58,7 @@ header{
     min-width: 160px;
     margin: 0;
     padding: 0;
-    z-index: 1;
+    
 }
 
 
@@ -150,6 +152,7 @@ img{
 }
 
 .w3-display-container{  
+    z-index: 1;
     position: relative;
     pointer-events: none;
     width: 2000px;
