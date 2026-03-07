@@ -31,7 +31,8 @@ def home():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
-            WHERE Products.product_type = 'Accessory';"""
+            WHERE Products.product_type = 'Accessory'
+            ORDER BY LENGTH(Products.product_name) DESC;"""
     results = query_db(sql)
     return render_template("home.html", results=results)
     # return str(results)
@@ -41,7 +42,8 @@ def products():
     # products page - ID, manufacturer, image url
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
-            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id;"""
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY LENGTH(Products.product_name) DESC;"""
     results = query_db(sql)
     return render_template("products.html", results=results)
 
