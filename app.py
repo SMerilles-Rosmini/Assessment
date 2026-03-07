@@ -47,7 +47,10 @@ def products():
     results = query_db(sql)
     return render_template("products.html", results=results)
 
-
+@app.route("/about/")
+def about():
+    #About Page - Just text about the website
+    return render_template("about.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

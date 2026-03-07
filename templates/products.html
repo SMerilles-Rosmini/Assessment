@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<div class="three-column">
-    {% for product in results %}    
+<h1 class="product-header">All Products</h1>
+<div class="three-column">    
+    {% for product in results %}            
         <div class="w3-card-4">
             <a href="{{ url_for('products', id=product[0]) }}" class="product_name"> 
                 <h1 class="product_name">{{ product[1] }}</h1>

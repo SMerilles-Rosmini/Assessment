@@ -23,7 +23,7 @@
     
       <div class=" w3-bar navbar ">
           <a href="{{url_for('home')}}" class="w3-bar-item w3-button button ">Home</a>
-          <a href="#" class="w3-bar-item w3-button button ">Link 1</a>
+          <a href="{{url_for('about')}}" class="w3-bar-item w3-button button ">About Us</a>
           <div class="w3-dropdown-hover">
             <button class="w3-button button ">Products</button>
             <div class="w3-dropdown-content w3-bar-block w3-card-4">
@@ -38,5 +38,17 @@
    
     {% block body %}
     {% endblock %}
+    <footer>
+      <div class="w3-container w3-theme-d3">
+        <div class="three-column">
+          <a href="{{url_for('home')}}" class="w3-bar-item w3-button button ">Home</a>
+          <a href="{{url_for('about')}}" class="w3-bar-item w3-button button ">About Us</a>        
+          <a href="{{url_for('products')}}" class="w3-bar-item w3-button button">Rosin</a>
+          <a href="#" class="w3-bar-item w3-button button ">Cases and Shoulder rests</a>
+          <a href="#" class="w3-bar-item w3-button button ">Violins and Bows</a>
+          <a href="#" class="w3-bar-item w3-button button ">Strings</a>
+        </div>
+      </div>
+    </footer>
 </body>
 </html>

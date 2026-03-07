@@ -129,7 +129,7 @@ img{
 }
 
 /* Home page */
-.home-product-header{
+.product-header{
     padding: 10px 10px 10px 10px;
     margin: 10px 10px 10px 10px;
 }
@@ -170,4 +170,12 @@ img{
     height: 100%;
     object-fit: contain;
    
+}
+
+/* About Page */
+.about-header{
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    margin: 10px 10px 10px 10px;
+    font-size: 50px;
 }
