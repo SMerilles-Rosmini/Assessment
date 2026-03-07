@@ -158,3 +158,16 @@ img{
     width: 2000px;
 }
 
+.image-container{
+    width: 500px;
+    height: 400px;
+    overflow: hidden;
+
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+   
+}
