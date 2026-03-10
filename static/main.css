@@ -176,9 +176,42 @@ img{
 .about-header{
     padding: 10px 10px 10px 10px;
     text-align: center;    
-    font-size: 50px;
-   
+    font-size: 50px;  
     
 
 }
 
+.about-container1{
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.about-container2{
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    align-items: center;
+
+}
+.about-image{
+    height: 500px;
+    padding: 10px 10px 10px 10px;   
+    margin: 10px 10px 10px 10px;
+    padding-right: 20px;
+    margin-right: 20px;
+}
+
+.mission-heading{  
+    font-size: 40px;
+
+}
+
+.text-container{   
+    display: flex;
+    flex-direction: column;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+}
