@@ -52,5 +52,14 @@ def about():
     #About Page - Just text about the website
     return render_template("about.html")
 
+@app.route("/individual_products/")
+def individ_products():
+    # indivdual products page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id;"""
+    results = query_db(sql)
+    return render_template("individ_product.html", results=results)
+
 if __name__ == '__main__':
     app.run(debug=True)
