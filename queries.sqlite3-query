@@ -12,3 +12,7 @@ JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id;
 SELECT * FROM Products 
 WHERE Products.product_type = 'Violin';
 
+-- Individual Products
+SELECT * FROM Products 
+JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+WHERE Products.product_id = ?;

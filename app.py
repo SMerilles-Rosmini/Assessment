@@ -52,14 +52,14 @@ def about():
     #About Page - Just text about the website
     return render_template("about.html")
 
-@app.route("/individual_products/")
-def individ_products():
+@app.route("/individual_products/<int:id>")
+def individ_products(id):
     # indivdual products page - ID, manufacturer, image url
-    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
-            FROM Products
-            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id;"""
-    results = query_db(sql)
-    return render_template("individ_product.html", results=results)
+    sql = """SELECT * FROM Products 
+        JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+        WHERE Products.product_id = ?;"""
+    result = query_db(sql,(id,), True)
+    return render_template("individ_product.html", individ_products=result)
 
 if __name__ == '__main__':
     app.run(debug=True)

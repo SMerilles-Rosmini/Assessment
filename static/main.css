@@ -135,6 +135,8 @@ img{
 }
 
 .cart-link{
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
     text-decoration: none;
 }
 
@@ -216,8 +218,15 @@ img{
     padding: 10px 10px 10px 10px;
 }
 
+/* Individual Products page */
+
 .two-column{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3em;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.individ_image{  
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
 }

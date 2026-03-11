@@ -9,14 +9,13 @@
     <div class="three-column">
         {% for product in results %}        
             <div class="w3-card-4 ">
-                <a href="{{ url_for('home', id=product[0]) }}" class="product_name"> 
+                <a href="{{ url_for('individ_products', id=product[0]) }}" class="product_name"> 
                     <h1 class="product_name">{{ product[1] }}</h1>
                     <div class="image-container">
                         <img src="{{ product[2] }}" alt="{{ product[1] }}">
                     </div>
                     <h2>${{ product[3] }}</h2>
-                </a>
-                <a href="#" class="cart-link"><button class="w3-button w3-block w3-theme">Add to Cart</button></a>           
+                </a>                           
             </div>
         
 
