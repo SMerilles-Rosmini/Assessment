@@ -230,3 +230,10 @@ img{
     margin: 10px 10px 10px 10px;
     padding: 10px 10px 10px 10px;
 }
+
+.price-cart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
