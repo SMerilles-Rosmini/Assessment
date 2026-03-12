@@ -1,13 +1,16 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <div class="two-column">        
-        <div class="w3-card-4 individ_image">
-            <h1 class="product_name">{{ individ_products[1] }}</h1>   
+    <div class="individ_product-container">
+        <h1 class="individ_product_name">{{ individ_products[1] }}</h1>  
+    </div>
+    <div class="two-column">                 
+        <div class="w3-card-4 individ_image">        
             <img src="{{ individ_products[4] }}" alt="{{ individ_products[1] }}" > 
         </div>
-        <div class="price-cart">
+        <div class="info">            
             <h2>${{ individ_products[3] }}</h2>
+            <h4></h4>
             <a href="#" class="cart-link"><button class="w3-button w3-block w3-theme">Add to Cart</button></a>   
                
         </div>      

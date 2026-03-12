@@ -55,11 +55,12 @@ def about():
 @app.route("/individual_products/<int:id>")
 def individ_products(id):
     # indivdual products page - ID, manufacturer, image url
-    sql = """SELECT * FROM Products 
+    sql = """SELECT * FROM Products
         JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
         WHERE Products.product_id = ?;"""
-    result = query_db(sql,(id,), True)
+    result = query_db(sql,(id,), True)  
     return render_template("individ_product.html", individ_products=result)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
