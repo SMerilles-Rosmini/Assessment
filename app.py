@@ -61,6 +61,15 @@ def individ_products(id):
     result = query_db(sql,(id,), True)  
     return render_template("individ_product.html", individ_products=result)
 
+@app.route("/cart/")
+def cart():
+    # Cart page - ID, price, product name
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price  
+        FROM Products
+        JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id;"""
+    result = query_db(sql)
+    return render_template("cart.html", cart=result)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
