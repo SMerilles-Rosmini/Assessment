@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, g, render_template
+from flask import Flask, g, render_template, redirect, url_for
 
 DATABASE = 'Database.db'
 
@@ -61,15 +61,33 @@ def individ_products(id):
     result = query_db(sql,(id,), True)  
     return render_template("individ_product.html", individ_products=result)
 
-@app.route("/cart/")
-def cart():
-    # Cart page - ID, price, product name
-    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price  
-        FROM Products
-        JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id;"""
-    result = query_db(sql)
-    return render_template("cart.html", cart=result)
+@app.route("/add_to_cart/<int:id>")
+def add_cart(id):
+    # Add to cart function
+    sql = """INSERT INTO cart (product_id) VALUES (?)"""
+    result = query_db(sql, (id,), True)
+    return redirect(url_for("cart_view", add_cart=result))
 
+
+
+@app.route("/cart/")
+def cart_view():
+    # Cart page  
+    sql = """SELECT * FROM cart"""
+    cart_items = []
+    for item in cart_items:
+        prod = next((p for p in products if p["id"] == item["product_id"]), None )
+        if prod:
+            cart_items.append({"cart_id": item["id"], **prod})
+    total = sum(item["price"] for item in cart_items)
+    return render_template("cart.html", cart_items=cart_items, total=total)
+
+@app.route("/remove-from-cart/<int:id>")
+def remove_from_cart(id):
+    # remove from cart function
+    sql = """DELETE FROM cart WHERE id = ?"""
+    result = query_db(sql, (id,), True)
+    return redirect(url_for("cart_view", result=result))
 
 if __name__ == '__main__':
     app.run(debug=True)
