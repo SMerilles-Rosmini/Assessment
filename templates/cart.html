@@ -1,20 +1,21 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <h1 class="cart-heading">Your Cart</h1>
-    {% if cart == True %}
-        <div class="w3-container cart-container">
+    <h1 class="cart-heading">Your Cart</h1>  
+    <div class="w3-container cart-container">
+        {% if cart %}
             {% for item in cart %}
                 <img src="{{ item[2] }}" width="80">              
                 <h3>{{ item[1] }}</h3>          
                 <h3>${{ "%2.f"| format(product.price) }}</h3>  
                 <a href="{{url_for('remove_from_cart', item=id)}}" class="w3-button">Remove</a>
-                    
+                        
             {% endfor %}
             <h2>Total: ${{"%2.f"| format(total)}}</h2>
-    {% else %}
-            <p class="cart-empty">Your Cart is Empty.</p>       
-        </div>
-    {% endif %}
+        {% else %}
+            <p class="cart-empty">Your Cart is Empty.</p>
+        {% endif %}
+    </div>
+   
 
 {% endblock %}
