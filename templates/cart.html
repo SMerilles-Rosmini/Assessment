@@ -2,7 +2,7 @@
 
 {% block body %}
     <h1 class="cart-heading">Your Cart</h1>
-    {% if cart %}
+    {% if cart == True %}
         <div class="w3-container cart-container">
             {% for item in cart %}
                 <img src="{{ item[2] }}" width="80">              
@@ -11,9 +11,9 @@
                 <a href="{{url_for('remove_from_cart', item=id)}}" class="w3-button">Remove</a>
                     
             {% endfor %}
-                <h2>Total: ${{"%2.f"| format(total)}}</h2>
-        {% else %}
-            <p>Your Cart is Empty.</p>       
+            <h2>Total: ${{"%2.f"| format(total)}}</h2>
+    {% else %}
+            <p class="cart-empty">Your Cart is Empty.</p>       
         </div>
     {% endif %}
 

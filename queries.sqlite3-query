@@ -16,3 +16,6 @@ WHERE Products.product_type = 'Violin';
 SELECT * FROM Products 
 JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
 WHERE Products.product_id = ?;
+
+-- Add to Cart Function
+INSERT INTO cart (product_id) VALUES (?)
