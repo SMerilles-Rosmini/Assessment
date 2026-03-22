@@ -68,26 +68,20 @@ def add_cart(id):
     result = query_db(sql, (id,), True)
     return redirect(url_for("cart_view", add_cart=result))
 
-
-
 @app.route("/cart/")
 def cart_view():
     # Cart page  
-    sql = """SELECT * FROM cart"""
-    cart_items = []
-    for item in cart_items:
-        prod = next((p for p in products if p["id"] == item["product_id"]), None )
-        if prod:
-            cart_items.append({"cart_id": item["id"], **prod})
-    total = sum(item["price"] for item in cart_items)
-    return render_template("cart.html", cart_items=cart_items, total=total)
+    sql = """SELECT * FROM cart 
+            INNER JOIN Products ON cart.product_id = Products.product_id;""" 
+    result = query_db(sql) 
+    return render_template("cart.html", cart_view=result)
 
 @app.route("/remove-from-cart/<int:id>")
 def remove_from_cart(id):
     # remove from cart function
     sql = """DELETE FROM cart WHERE id = ?"""
     result = query_db(sql, (id,), True)
-    return redirect(url_for("cart_view", result=result))
+    return redirect(url_for("cart_view", renmove_from_cart=result))
 
 if __name__ == '__main__':
     app.run(debug=True)
