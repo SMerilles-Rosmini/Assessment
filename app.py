@@ -64,17 +64,24 @@ def individ_products(id):
 @app.route("/add_to_cart/<int:id>")
 def add_cart(id):
     # Add to cart function
-    sql = """INSERT INTO cart (product_id) VALUES (?)"""
+    sql = """INSERT INTO cart (product_id) VALUES (?);"""
     result = query_db(sql, (id,), True)
+    print(result)
     return redirect(url_for("cart_view", add_cart=result))
 
 @app.route("/cart/")
 def cart_view():
     # Cart page  
     sql = """SELECT * FROM cart 
-            INNER JOIN Products ON cart.product_id = Products.product_id;""" 
+            JOIN Products ON cart.product_id = Products.product_id;""" 
+    cart_items = []
+    for item in cart_items:
+        prod = next((p for p in products if p["id"] == item["product_id"]), None )
+        if prod:
+            cart_items.append({"cart_id": item["id"], **prod})
+    total = sum(item["price"] for item in cart_items)
     result = query_db(sql) 
-    return render_template("cart.html", cart_view=result)
+    return render_template("cart.html", cart_view=result, total=total)
 
 @app.route("/remove-from-cart/<int:id>")
 def remove_from_cart(id):
