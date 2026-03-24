@@ -1,5 +1,5 @@
 body,h1,h2,h3,h4,h5,h6 {font-family: NewsReader, sans-serif;}
-/* Customised colors from w3.css */
+/* Customised colors from w3.css framework */
 .w3-theme-l5 {color:#000 !important; background-color:#fbeff1 !important}
 .w3-theme-l4 {color:#000 !important; background-color:#f3cbd1 !important}
 .w3-theme-l3 {color:#000 !important; background-color:#e796a2 !important}
@@ -258,7 +258,41 @@ img{
     
 }
 
+.cart_items{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.cart-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
 .cart-empty{
     padding: 10px 10px 10px 10px;
     margin: 10px 10px 10px 10px;
+    font-size: 20px;
+}
+
+.cart-image{
+    width:100px;
+    height: auto;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+   
+}
+
+.cart-item-info{
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+    text-align: center;
+}
+
+.cart-button{
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+    height: 50px;
 }

@@ -24,6 +24,11 @@ def query_db(query, args=(), one=False):
     cur.close()
     return (rv[0] if rv else None) if one else rv
 
+def execute_db(query, args=()):
+    db = get_db()
+    cur = db.execute(query, args)
+    db.commit()
+    cur.close()
 
 @app.route('/')
 def home():
@@ -65,30 +70,27 @@ def individ_products(id):
 def add_cart(id):
     # Add to cart function
     sql = """INSERT INTO cart (product_id) VALUES (?);"""
-    result = query_db(sql, (id,), True)
-    print(result)
-    return redirect(url_for("cart_view", add_cart=result))
+    execute_db(sql, (id,))    
+    return redirect(url_for("cart_view"))
 
 @app.route("/cart/")
 def cart_view():
     # Cart page  
-    sql = """SELECT * FROM cart 
-            JOIN Products ON cart.product_id = Products.product_id;""" 
-    cart_items = []
-    for item in cart_items:
-        prod = next((p for p in products if p["id"] == item["product_id"]), None )
-        if prod:
-            cart_items.append({"cart_id": item["id"], **prod})
-    total = sum(item["price"] for item in cart_items)
+    sql = """
+            SELECT Products.product_id, Products.product_name, Products.price, Products.image_url
+            FROM cart
+            JOIN Products ON cart.product_id = Products.product_id;
+        """
     result = query_db(sql) 
-    return render_template("cart.html", cart_view=result, total=total)
+    total = sum(item[2] for item in result)
+    return render_template("cart.html", result=result, total=total)
 
 @app.route("/remove-from-cart/<int:id>")
 def remove_from_cart(id):
     # remove from cart function
-    sql = """DELETE FROM cart WHERE id = ?"""
-    result = query_db(sql, (id,), True)
-    return redirect(url_for("cart_view", renmove_from_cart=result))
+    sql = """DELETE FROM cart WHERE product_id = (?);"""
+    execute_db(sql, (id,))
+    return redirect(url_for("cart_view"))
 
 if __name__ == '__main__':
     app.run(debug=True)

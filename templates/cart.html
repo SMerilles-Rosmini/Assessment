@@ -3,15 +3,16 @@
 {% block body %}
     <h1 class="cart-heading">Your Cart</h1>  
     <div class="w3-container cart-container">
-        {% if cart %}
-            {% for item in cart %}
-                <img src="{{ item[2] }}" width="80">              
-                <h3>{{ item[1] }}</h3>          
-                <h3>${{ "%2.f"| format(product.price) }}</h3>  
-                <a href="{{url_for('remove_from_cart', item=id)}}" class="w3-button">Remove</a>
-                        
+        {% if result %}
+            {% for item in result %}
+                <div class="cart_items">
+                    <img src="{{ item[3] }}" width="80" class="cart-image">              
+                    <h3 class="cart-item-info">{{ item[1] }}</h3>          
+                    <h3 class="cart-item-info">${{ item[2] }}</h3>  
+                    <a href="{{url_for('remove_from_cart', id=item[0])}}" class="w3-button cart-button w3-theme">Remove</a>
+                </div>
             {% endfor %}
-            <h2>Total: ${{"%2.f"| format(total)}}</h2>
+            <h2>Total: ${{ total }}</h2>
         {% else %}
             <p class="cart-empty">Your Cart is Empty.</p>
         {% endif %}
