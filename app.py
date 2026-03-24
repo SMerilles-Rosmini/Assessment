@@ -94,6 +94,7 @@ def remove_from_cart(id):
 
 @app.route("/rosin/")
 def rosin():
+    # Rosin Product page
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id            
@@ -103,12 +104,23 @@ def rosin():
 
 @app.route("/strings/")
 def string():
+    # Strings Product Page
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id            
             WHERE Products.product_type = 'String';"""
     results = query_db(sql)
     return render_template("strings.html", results=results)
+
+@app.route("/cases_and_shoulder_rests/")
+def case_and_shoulder_rest():
+    # Strings Product Page
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id            
+            WHERE Products.product_type IN ('Case', 'Shoulder_rest');"""
+    results = query_db(sql)
+    return render_template("case_shoulder_rest.html", results=results)
 
 if __name__ == '__main__':
     app.run(debug=True)
