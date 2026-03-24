@@ -122,5 +122,16 @@ def case_and_shoulder_rest():
     results = query_db(sql)
     return render_template("case_shoulder_rest.html", results=results)
 
+@app.route("/violins/")
+def violin():
+    # Strings Product Page
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id            
+            WHERE Products.product_type = 'Violin';"""
+    results = query_db(sql)
+    return render_template("violins.html", results=results)
+
 if __name__ == '__main__':
+
     app.run(debug=True)
