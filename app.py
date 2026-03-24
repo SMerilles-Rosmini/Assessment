@@ -36,11 +36,11 @@ def home():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
-            WHERE Products.product_type = 'Accessory'
+            WHERE Products.product_type IN ('Shoulder_rest', 'String', 'Rosin', 'Case')
             ORDER BY LENGTH(Products.product_name) DESC;"""
     results = query_db(sql)
     return render_template("home.html", results=results)
-    # return str(results)
+  
 
 @app.route("/products/")
 def products():
@@ -91,6 +91,15 @@ def remove_from_cart(id):
     sql = """DELETE FROM cart WHERE product_id = (?);"""
     execute_db(sql, (id,))
     return redirect(url_for("cart_view"))
+
+@app.route("/rosin/")
+def rosin():
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id            
+            WHERE Products.product_type = 'Rosin';"""
+    results = query_db(sql)
+    return render_template("rosin.html", results=results)
 
 if __name__ == '__main__':
     app.run(debug=True)
