@@ -101,5 +101,14 @@ def rosin():
     results = query_db(sql)
     return render_template("rosin.html", results=results)
 
+@app.route("/strings/")
+def string():
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id            
+            WHERE Products.product_type = 'String';"""
+    results = query_db(sql)
+    return render_template("strings.html", results=results)
+
 if __name__ == '__main__':
     app.run(debug=True)
