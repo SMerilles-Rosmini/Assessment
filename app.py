@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, g, render_template, redirect, url_for
+from flask import Flask, g, render_template, redirect, url_for, request
 
 DATABASE = 'Database.db'
 
@@ -131,6 +131,15 @@ def violin():
             WHERE Products.product_type = 'Violin';"""
     results = query_db(sql)
     return render_template("violins.html", results=results)
+
+@app.route('/search', methods=['POST'])
+def search():
+    # Search Bar
+    sql = """SELECT Products.product_name, Products.product_type
+            FROM Products
+            WHERE Products.product_type OR Products.product_name = (?);"""
+    results = query_db(sql)
+    return render_template('layout.html', results=results)
 
 if __name__ == '__main__':
 

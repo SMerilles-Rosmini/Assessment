@@ -14,7 +14,9 @@
     <header>
       <div class="w3-container">
         <h1>Simple Strings</h1>
-        <input type="text" class="w3-bar-item w3-input" placeholder="Search..">
+        <form action="/search" method="POST">
+          <input type="text" class="w3-bar-item w3-input search" placeholder="Search..">  
+        </form>
         <a href="{{url_for('cart_view')}}"><span class="material-symbols-outlined">
           shopping_cart
         </span>
