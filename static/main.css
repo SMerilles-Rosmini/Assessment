@@ -292,6 +292,7 @@ img{
 
 .cart-button{
     text-align: center;
+    width: 200px;
     padding: 10px 10px 10px 10px;
     margin: 10px 10px 10px 10px;
     height: 50px;
