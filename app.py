@@ -134,12 +134,14 @@ def violin():
 
 @app.route('/search', methods=['POST'])
 def search():
-    # Search Bar
-    sql = """SELECT Products.product_name, Products.product_type
-            FROM Products
-            WHERE Products.product_type OR Products.product_name = (?);"""
-    results = query_db(sql)
-    return render_template('layout.html', results=results)
+    search_term = f"%{request.form.get('search', '')}%"  
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+             FROM Products
+             WHERE Products.product_type LIKE ?
+             OR Products.product_name LIKE ?
+            ORDER BY LENGTH(Products.product_name) DESC;"""
+    results = query_db(sql, [search_term, search_term]) 
+    return render_template('search.html', results=results)
 
 if __name__ == '__main__':
 
