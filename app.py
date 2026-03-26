@@ -134,6 +134,7 @@ def violin():
 
 @app.route('/search', methods=['POST'])
 def search():
+    # Search Bar functionality + Search results
     search_term = f"%{request.form.get('search', '')}%"  
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
              FROM Products
