@@ -144,6 +144,26 @@ def search():
     results = query_db(sql, [search_term, search_term]) 
     return render_template('search.html', results=results)
 
+@app.route("/checkout_submit/")
+def checkout_submit():
+    # Submit shipping address function
+    return redirect(url_for("payment"))
+
+@app.route("/checkout/")
+def checkout():
+    # Checkout Page
+    return render_template('checkout.html')
+
+@app.route("/payment/")
+def payment():
+    # Payment Function
+    return render_template('payment.html')
+
+@app.route("/payment_submit/")
+def payment_submit():
+    # Payment submit Function
+    return redirect(url_for("home"))
+
 if __name__ == '__main__':
 
     app.run(debug=True)

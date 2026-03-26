@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+<!-- Checkout page -->
+{% block body %}
+<h1 class="product-header">Payment</h1>
+ <form action="/payment">        
+        <input name="security" type="integer" class="w3-bar-item w3-input checkout_inputs" placeholder="Security Code">
+        <input name="cc_number" type="integer" class="w3-bar-item w3-input checkout_inputs" placeholder="Credit Card Number">
+       
+        
+    </form>
+    <a href="{{url_for('payment_submit')}}" class="w3-button cart-button w3-theme">Submit</a>
+
+{% endblock %}

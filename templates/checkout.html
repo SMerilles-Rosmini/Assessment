@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+<!-- Checkout page -->
+{% block body %}
+<h1 class="product-header">Shipping Address</h1>
+ <form action="/checkout">        
+        <input name="first_name" type="text" class="w3-bar-item w3-input checkout_inputs" placeholder="First Name">
+        <input name="last_name" type="text" class="w3-bar-item w3-input checkout_inputs" placeholder="Last Name">
+        <input name="country" type="text" class="w3-bar-item w3-input checkout_inputs" placeholder="Country">
+        <input name="city" type="text" class="w3-bar-item w3-input checkout_inputs" placeholder="City">
+        <input name="zip" type="integer" class="w3-bar-item w3-input checkout_inputs" placeholder="Zip">
+        <input name="address" type="text" class="w3-bar-item w3-input checkout_inputs" placeholder="Shipping address">
+        <input name="phone" type="integer" class="w3-bar-item w3-input checkout_inputs" placeholder="Phone Number">        
+        
+    </form>
+    <a href="{{url_for('checkout_submit')}}" class="w3-button cart-button w3-theme">Submit</a>
+
+{% endblock %}
