@@ -157,7 +157,13 @@ def checkout():
 @app.route("/payment/")
 def payment():
     # Payment Function
-    return render_template('payment.html')
+    sql = """
+            SELECT Products.product_id, Products.product_name, Products.price, Products.image_url
+            FROM cart
+            JOIN Products ON cart.product_id = Products.product_id;"""
+    result  = query_db(sql)
+    total = sum(item[2] for item in result)
+    return render_template('payment.html', total=total)
 
 @app.route("/payment_submit/")
 def payment_submit():
