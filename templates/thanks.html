@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+<!-- Thank you page -->
+{% block body %}
+<h1 class="heading">Thank you for your purchase!</h1>
+<h2 class="heading">Your Order was processed successfully.</h2>
+<div class="container">
+    <div class="w3-card-4 card">
+        <h3 class="heading">Shop for more items!</h3>
+        <a href="{{url_for('products')}}" class="w3-button cart-button w3-theme">All Our Products</a>    
+    </div>
+    <div class="w3-card-4 card">
+        <h3 class="heading">Learn More About Simple Strings!</h3>
+        <a href="{{url_for('about')}}" class="w3-button cart-button w3-theme">About Us!</a>
+    </div>
+</div>
+{% endblock %}

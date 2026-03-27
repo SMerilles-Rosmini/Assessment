@@ -165,10 +165,17 @@ def payment():
     total = sum(item[2] for item in result)
     return render_template('payment.html', total=total)
 
+
+@app.route("/thank_you/")
+def thanks():
+    # A Page that says thank you for purchasing
+    return render_template("thanks.html")
+
 @app.route("/payment_submit/")
 def payment_submit():
     # Payment submit Function
-    return redirect(url_for("home"))
+    return redirect(url_for("thanks"))
+
 
 if __name__ == '__main__':
 

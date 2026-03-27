@@ -7,7 +7,7 @@
         <input name="cc_number" type="integer" class="w3-bar-item w3-input checkout_inputs" placeholder="Credit Card Number">      
         
     </form>
-    <h2>Total: ${{ total }}</h2>
+    <h2 class="total_price">Total: ${{ total }}</h2>
     <a href="{{url_for('payment_submit')}}" class="w3-button cart-button w3-theme">Submit</a>
 
 {% endblock %}

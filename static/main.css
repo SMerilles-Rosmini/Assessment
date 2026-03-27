@@ -295,7 +295,7 @@ img{
     width: 200px;
     padding: 10px 10px 10px 10px;
     margin: 10px 10px 10px 10px;
-    height: 50px;
+    height: 40px;
 }
 
 /* Search bar */
@@ -304,3 +304,35 @@ img{
     height:30px;
 }
 
+/* Thank you Page */
+.heading{
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+    text-align: center;
+
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 30px;
+  
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+    align-items: center;
+}
+
+
+
+
+/* Payment Page */
+.total_price{
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+}
