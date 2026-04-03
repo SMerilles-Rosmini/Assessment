@@ -52,6 +52,47 @@ def products():
     results = query_db(sql)
     return render_template("products.html", results=results)
 
+@app.route('/high-to-low/')
+def product_filtered_desc():
+    # filter price products page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.price DESC;"""
+    results = query_db(sql)
+    return render_template("products.html", results=results)
+
+@app.route('/low-to-high/')
+def product_filtered_asc():
+    # filter price products page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.price ASC;"""
+    results = query_db(sql)
+    return render_template("products.html", results=results)
+
+@app.route('/a-to-z/')
+def product_a_z():
+    # filter name products page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.product_name ASC;"""
+    results = query_db(sql)
+    return render_template("products.html", results=results)
+
+
+@app.route('/z-to-a/')
+def product_z_a():
+    # filter name products page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.product_name DESC;"""
+    results = query_db(sql)
+    return render_template("products.html", results=results)
+
 @app.route("/about/")
 def about():
     #About Page - Just text about the website
