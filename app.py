@@ -285,7 +285,7 @@ def strings_z_a():
     results = query_db(sql)
     return render_template("strings.html", results=results)
 
-# Cases and Shoulder rests
+# Cases and Shoulder rests page
 @app.route("/cases_and_shoulder_rests/")
 def case_and_shoulder_rest():
     # Strings Product Page
@@ -296,6 +296,48 @@ def case_and_shoulder_rest():
     results = query_db(sql)
     return render_template("case_shoulder_rest.html", results=results)
 
+@app.route('/cases-shoulder-rests-high-to-low/')
+def cases_shoulder_rests_filtered_desc():
+    # filter price cases and shoulder rests page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.price DESC;"""
+    results = query_db(sql)
+    return render_template("cases_shouldr_rests.html", results=results)
+
+@app.route('/cases-shoulder-rests-low-to-high/')
+def cases_shoulder_rests_filtered_asc():
+    # filter price cases adn shoulder rests page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.price ASC;"""
+    results = query_db(sql)
+    return render_template("cases_shoulder_rests.html", results=results)
+
+@app.route('/cases-shoulder-rest-a-to-z/')
+def cases_shoulder_rests_a_z():
+    # filter name cases and shoulder rests page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.product_name ASC;"""
+    results = query_db(sql)
+    return render_template("cases_shoulder_rest.html", results=results)
+
+
+@app.route('/cases-shoulder-rest-z-to-a/')
+def cases_shoulder_rests_z_a():
+    # filter name cases adn shoulder rests page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.product_name DESC;"""
+    results = query_db(sql)
+    return render_template("cases_shoulder_rest.html", results=results)
+
+# Violins page
 @app.route("/violins/")
 def violin():
     # Strings Product Page
@@ -306,6 +348,7 @@ def violin():
     results = query_db(sql)
     return render_template("violins.html", results=results)
 
+# Search Bar
 @app.route('/search', methods=['POST'])
 def search():
     # Search Bar functionality + Search results
@@ -318,6 +361,7 @@ def search():
     results = query_db(sql, [search_term, search_term]) 
     return render_template('search.html', results=results)
 
+# Checkout
 @app.route("/checkout_submit/")
 def checkout_submit():
     # Submit shipping address function
@@ -328,6 +372,7 @@ def checkout():
     # Checkout Page
     return render_template('checkout.html')
 
+# Payment
 @app.route("/payment/")
 def payment():
     # Payment Function
@@ -339,12 +384,12 @@ def payment():
     total = sum(item[2] for item in result)
     return render_template('payment.html', total=total)
 
-
+# Thank you page
 @app.route("/thank_you/")
 def thanks():
     # A Page that says thank you for purchasing
     return render_template("thanks.html")
-
+# Payment submit
 @app.route("/payment_submit/")
 def payment_submit():
     # Payment submit Function
