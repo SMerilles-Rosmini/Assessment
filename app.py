@@ -304,7 +304,7 @@ def cases_shoulder_rests_filtered_desc():
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
             ORDER BY Products.price DESC;"""
     results = query_db(sql)
-    return render_template("cases_shouldr_rests.html", results=results)
+    return render_template("cases_shoulder_rests.html", results=results)
 
 @app.route('/cases-shoulder-rests-low-to-high/')
 def cases_shoulder_rests_filtered_asc():
@@ -345,6 +345,47 @@ def violin():
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id            
             WHERE Products.product_type = 'Violin';"""
+    results = query_db(sql)
+    return render_template("violins.html", results=results)
+
+@app.route('/violins-high-to-low/')
+def violins_filtered_desc():
+    # filter price cases and shoulder rests page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.price DESC;"""
+    results = query_db(sql)
+    return render_template("violins.html", results=results)
+
+@app.route('/violins-low-to-high/')
+def violins_filtered_asc():
+    # filter price violins page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.price ASC;"""
+    results = query_db(sql)
+    return render_template("violins.html", results=results)
+
+@app.route('/violins-a-to-z/')
+def violins_a_z():
+    # filter name violins page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.product_name ASC;"""
+    results = query_db(sql)
+    return render_template("violins.html", results=results)
+
+
+@app.route('/violins-z-to-a/')
+def violins_z_a():
+    # filter name violins page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.product_name DESC;"""
     results = query_db(sql)
     return render_template("violins.html", results=results)
 
