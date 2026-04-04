@@ -244,6 +244,48 @@ def string():
     results = query_db(sql)
     return render_template("strings.html", results=results)
 
+@app.route('/strings-high-to-low/')
+def strings_filtered_desc():
+    # filter price strings page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.price DESC;"""
+    results = query_db(sql)
+    return render_template("strings.html", results=results)
+
+@app.route('/strings-low-to-high/')
+def strings_filtered_asc():
+    # filter price strings page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.price ASC;"""
+    results = query_db(sql)
+    return render_template("strings.html", results=results)
+
+@app.route('/strings-a-to-z/')
+def strings_a_z():
+    # filter name strings page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.product_name ASC;"""
+    results = query_db(sql)
+    return render_template("strings.html", results=results)
+
+
+@app.route('/strings-z-to-a/')
+def strings_z_a():
+    # filter name strings page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.product_name DESC;"""
+    results = query_db(sql)
+    return render_template("strings.html", results=results)
+
+# Cases and Shoulder rests
 @app.route("/cases_and_shoulder_rests/")
 def case_and_shoulder_rest():
     # Strings Product Page
