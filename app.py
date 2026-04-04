@@ -317,7 +317,7 @@ def cases_shoulder_rests_filtered_desc():
             WHERE Products.product_type IN ('Case', 'Shoulder_rest')
             ORDER BY Products.price DESC;"""
     results = query_db(sql)
-    return render_template("case_shoulder_rests.html", results=results)
+    return render_template("case_shoulder_rest.html", results=results)
 
 @app.route('/cases-shoulder-rests-low-to-high/')
 def cases_shoulder_rests_filtered_asc():
@@ -328,7 +328,7 @@ def cases_shoulder_rests_filtered_asc():
             WHERE Products.product_type IN ('Case', 'Shoulder_rest')
             ORDER BY Products.price ASC;"""
     results = query_db(sql)
-    return render_template("case_shoulder_rests.html", results=results)
+    return render_template("case_shoulder_rest.html", results=results)
 
 @app.route('/cases-shoulder-rest-a-to-z/')
 def cases_shoulder_rests_a_z():
