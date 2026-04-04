@@ -426,50 +426,54 @@ def search():
 @app.route('/search-high-to-low/')
 def search_filtered_desc():
     # filter price search page - ID, manufacturer, image url
+    search_term = f"%{request.form.get('search', '')}%"  
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
             WHERE Products.product_type LIKE ?
              OR Products.product_name LIKE ?
             ORDER BY Products.price DESC;"""
-    results = query_db(sql)
+    results = query_db(sql,  [search_term, search_term])
     return render_template("search.html", results=results)
 
 @app.route('/search-low-to-high/')
 def search_filtered_asc():
     # filter price search page - ID, manufacturer, image url
+    search_term = f"%{request.form.get('search', '')}%"  
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
             WHERE Products.product_type LIKE ?
              OR Products.product_name LIKE ?
             ORDER BY Products.price ASC;"""
-    results = query_db(sql)
+    results = query_db(sql, [search_term, search_term])
     return render_template("search.html", results=results)
 
 @app.route('/search-a-to-z/')
 def search_a_z():
     # filter name search page - ID, manufacturer, image url
+    search_term = f"%{request.form.get('search', '')}%"  
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
             WHERE Products.product_type LIKE ?
              OR Products.product_name LIKE ?
             ORDER BY Products.product_name ASC;"""
-    results = query_db(sql)
+    results = query_db(sql, [search_term, search_term])
     return render_template("search.html", results=results)
 
 
 @app.route('/search-z-to-a/')
 def search_z_a():
     # filter name search page - ID, manufacturer, image url
+    search_term = f"%{request.form.get('search', '')}%"  
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
             WHERE Products.product_type LIKE ?
              OR Products.product_name LIKE ?
             ORDER BY Products.product_name DESC;"""
-    results = query_db(sql)
+    results = query_db(sql, [search_term, search_term])
     return render_template("search.html", results=results)
 
 # Checkout
