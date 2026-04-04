@@ -350,7 +350,7 @@ def violin():
 
 @app.route('/violins-high-to-low/')
 def violins_filtered_desc():
-    # filter price cases and shoulder rests page - ID, manufacturer, image url
+    # filter price violins page - ID, manufacturer, image url
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
@@ -401,6 +401,48 @@ def search():
             ORDER BY LENGTH(Products.product_name) DESC;"""
     results = query_db(sql, [search_term, search_term]) 
     return render_template('search.html', results=results)
+
+
+@app.route('/search-high-to-low/')
+def search_filtered_desc():
+    # filter price search page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.price DESC;"""
+    results = query_db(sql)
+    return render_template("search.html", results=results)
+
+@app.route('/search-low-to-high/')
+def search_filtered_asc():
+    # filter price search page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.price ASC;"""
+    results = query_db(sql)
+    return render_template("search.html", results=results)
+
+@app.route('/search-a-to-z/')
+def search_a_z():
+    # filter name search page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.product_name ASC;"""
+    results = query_db(sql)
+    return render_template("search.html", results=results)
+
+
+@app.route('/search-z-to-a/')
+def search_z_a():
+    # filter name search page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.product_name DESC;"""
+    results = query_db(sql)
+    return render_template("search.html", results=results)
 
 # Checkout
 @app.route("/checkout_submit/")
