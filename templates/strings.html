@@ -1,18 +1,50 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h1 class="product-header">Strings</h1>
-<div class="three-column">        
-    {% for product in results %}
-        <a href="{{ url_for('individ_products', id=product[0])}}" class="product_name">             
-            <div class="w3-card-4">                    
-                    <h1 class="product_name">{{ product[1] }}</h1>
-                    <div class="image-container">
-                        <img src="{{ product[2] }}" alt="{{ product[1] }}" >
-                    </div>
-                    <h2>${{ product[3] }}</h2>                
-            </div>
-        </a>
-    {% endfor %}
+<!-- Sidebar for filter -->
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-theme" style="display:none" id="mySidebar">   
+    <button class="w3-bar-item w3-button button" onclick="w3_close()">Close</button>
+    <a href="{{url_for('product_filtered_asc')}}" class="w3-bar-item w3-button button">Price (Low to High)</a>
+    <a href="{{url_for('product_filtered_desc')}}" class="w3-bar-item w3-button button">Price (High to Low)</a>
+    <a href="{{url_for('product_a_z')}}" class="w3-bar-item w3-button button">Product Name (A to Z)</a>
+    <a href="{{url_for('product_z_a')}}" class="w3-bar-item w3-button button">Product Name (Z to A)</a>  
 </div>
+
+<div id="main" class="w3-mobile">
+<!-- Body of the page -->
+    <div>    
+        <h1 class="product-header">Strings</h1>
+        <button id="openNav" class="w3-button w3-theme filter-button w3-xlarge w3-round-xlarge" onclick="w3_open()">Filter</button>  
+    </div>    
+    
+
+    <div class="three-column">        
+        {% for product in results %}
+            <a href="{{ url_for('individ_products', id=product[0])}}" class="product_name">             
+                <div class="w3-card-4">                    
+                        <h1 class="product_name">{{ product[1] }}</h1>
+                        <div class="image-container">
+                            <img src="{{ product[2] }}" alt="{{ product[1] }}" >
+                        </div>
+                        <h2>${{ product[3] }}</h2>                
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+<!-- java Script to have the sidebar open and close -->
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
+
 {% endblock %}

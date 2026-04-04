@@ -1,11 +1,27 @@
 {% extends "layout.html" %}
 <!-- Home Page -->
 {% block body %}
+<!-- Sidebar for filter -->
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-theme" style="display:none" id="mySidebar">   
+    <button class="w3-bar-item w3-button button" onclick="w3_close()">Close</button>
+    <a href="{{url_for('product_filtered_asc')}}" class="w3-bar-item w3-button button">Price (Low to High)</a>
+    <a href="{{url_for('product_filtered_desc')}}" class="w3-bar-item w3-button button">Price (High to Low)</a>
+    <a href="{{url_for('product_a_z')}}" class="w3-bar-item w3-button button">Product Name (A to Z)</a>
+    <a href="{{url_for('product_z_a')}}" class="w3-bar-item w3-button button">Product Name (Z to A)</a>  
+</div>
+
+<div id="main" class="w3-mobile">
+<!-- Body of the page -->
+
     <div class="w3-display-container w3-mobile">
         <img src="https://images.unsplash.com/photo-1576477210278-8f46836b1b5f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fHZpb2xpbiUyMGluJTIwc2hvcHN8ZW58MHwwfDB8fHww" alt="Violins on display" class="w3-image">    
         <div class="w3-display-bottomleft w3-container">Get A Violin Today!</div> 
     </div> 
     <h1 class="product-header">Key Accessories</h1>
+    <div>       
+        <button id="openNav" class="w3-button w3-theme filter-button w3-xlarge w3-round-xlarge" onclick="w3_open()">Filter</button>     
+      
+    </div>
     <div class="three-column">
         {% for product in results %}        
             <div class="w3-card-4 ">
@@ -21,5 +37,22 @@
 
         {% endfor %}
     </div>  
+
+</div>
+<!-- java Script to have the sidebar open and close -->
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
+
 
 {% endblock %}
