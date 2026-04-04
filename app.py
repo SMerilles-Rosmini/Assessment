@@ -49,6 +49,7 @@ def home_filtered_desc():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type IN ('Shoulder_rest', 'String', 'Rosin', 'Case')
             ORDER BY Products.price DESC;"""
     results = query_db(sql)
     return render_template("home.html", results=results)
@@ -59,6 +60,7 @@ def home_filtered_asc():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type IN ('Shoulder_rest', 'String', 'Rosin', 'Case')
             ORDER BY Products.price ASC;"""
     results = query_db(sql)
     return render_template("home.html", results=results)
@@ -69,6 +71,7 @@ def home_a_z():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type IN ('Shoulder_rest', 'String', 'Rosin', 'Case')
             ORDER BY Products.product_name ASC;"""
     results = query_db(sql)
     return render_template("home.html", results=results)
@@ -80,6 +83,7 @@ def home_z_a():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type IN ('Shoulder_rest', 'String', 'Rosin', 'Case')
             ORDER BY Products.product_name DESC;"""
     results = query_db(sql)
     return render_template("home.html", results=results)
@@ -198,6 +202,7 @@ def rosin_filtered_desc():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type = 'Rosin'
             ORDER BY Products.price DESC;"""
     results = query_db(sql)
     return render_template("rosin.html", results=results)
@@ -208,6 +213,7 @@ def rosin_filtered_asc():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type = 'Rosin'
             ORDER BY Products.price ASC;"""
     results = query_db(sql)
     return render_template("rosin.html", results=results)
@@ -218,6 +224,7 @@ def rosin_a_z():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type = 'Rosin'
             ORDER BY Products.product_name ASC;"""
     results = query_db(sql)
     return render_template("rosin.html", results=results)
@@ -229,6 +236,7 @@ def rosin_z_a():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type = 'Rosin'
             ORDER BY Products.product_name DESC;"""
     results = query_db(sql)
     return render_template("rosin.html", results=results)
@@ -250,6 +258,7 @@ def strings_filtered_desc():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type = 'String'
             ORDER BY Products.price DESC;"""
     results = query_db(sql)
     return render_template("strings.html", results=results)
@@ -260,6 +269,7 @@ def strings_filtered_asc():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+             WHERE Products.product_type = 'String'
             ORDER BY Products.price ASC;"""
     results = query_db(sql)
     return render_template("strings.html", results=results)
@@ -270,6 +280,7 @@ def strings_a_z():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+             WHERE Products.product_type = 'String'
             ORDER BY Products.product_name ASC;"""
     results = query_db(sql)
     return render_template("strings.html", results=results)
@@ -281,6 +292,7 @@ def strings_z_a():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+             WHERE Products.product_type = 'String'
             ORDER BY Products.product_name DESC;"""
     results = query_db(sql)
     return render_template("strings.html", results=results)
@@ -302,6 +314,7 @@ def cases_shoulder_rests_filtered_desc():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+             WHERE Products.product_type IN ('Case', 'Shoulder_rest')
             ORDER BY Products.price DESC;"""
     results = query_db(sql)
     return render_template("cases_shoulder_rests.html", results=results)
@@ -312,6 +325,7 @@ def cases_shoulder_rests_filtered_asc():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+             WHERE Products.product_type IN ('Case', 'Shoulder_rest')
             ORDER BY Products.price ASC;"""
     results = query_db(sql)
     return render_template("cases_shoulder_rests.html", results=results)
@@ -322,6 +336,7 @@ def cases_shoulder_rests_a_z():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+             WHERE Products.product_type IN ('Case', 'Shoulder_rest')
             ORDER BY Products.product_name ASC;"""
     results = query_db(sql)
     return render_template("cases_shoulder_rest.html", results=results)
@@ -333,6 +348,7 @@ def cases_shoulder_rests_z_a():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+             WHERE Products.product_type IN ('Case', 'Shoulder_rest')
             ORDER BY Products.product_name DESC;"""
     results = query_db(sql)
     return render_template("cases_shoulder_rest.html", results=results)
@@ -354,6 +370,7 @@ def violins_filtered_desc():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type = 'Violin'
             ORDER BY Products.price DESC;"""
     results = query_db(sql)
     return render_template("violins.html", results=results)
@@ -364,6 +381,7 @@ def violins_filtered_asc():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type = 'Violin'
             ORDER BY Products.price ASC;"""
     results = query_db(sql)
     return render_template("violins.html", results=results)
@@ -374,6 +392,7 @@ def violins_a_z():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type = 'Violin'
             ORDER BY Products.product_name ASC;"""
     results = query_db(sql)
     return render_template("violins.html", results=results)
@@ -385,6 +404,7 @@ def violins_z_a():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type = 'Violin'
             ORDER BY Products.product_name DESC;"""
     results = query_db(sql)
     return render_template("violins.html", results=results)
@@ -409,6 +429,8 @@ def search_filtered_desc():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type LIKE ?
+             OR Products.product_name LIKE ?
             ORDER BY Products.price DESC;"""
     results = query_db(sql)
     return render_template("search.html", results=results)
@@ -419,6 +441,8 @@ def search_filtered_asc():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type LIKE ?
+             OR Products.product_name LIKE ?
             ORDER BY Products.price ASC;"""
     results = query_db(sql)
     return render_template("search.html", results=results)
@@ -429,6 +453,8 @@ def search_a_z():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type LIKE ?
+             OR Products.product_name LIKE ?
             ORDER BY Products.product_name ASC;"""
     results = query_db(sql)
     return render_template("search.html", results=results)
@@ -440,6 +466,8 @@ def search_z_a():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.product_type LIKE ?
+             OR Products.product_name LIKE ?
             ORDER BY Products.product_name DESC;"""
     results = query_db(sql)
     return render_template("search.html", results=results)
