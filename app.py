@@ -314,10 +314,10 @@ def cases_shoulder_rests_filtered_desc():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
-             WHERE Products.product_type IN ('Case', 'Shoulder_rest')
+            WHERE Products.product_type IN ('Case', 'Shoulder_rest')
             ORDER BY Products.price DESC;"""
     results = query_db(sql)
-    return render_template("cases_shoulder_rests.html", results=results)
+    return render_template("case_shoulder_rests.html", results=results)
 
 @app.route('/cases-shoulder-rests-low-to-high/')
 def cases_shoulder_rests_filtered_asc():
@@ -325,10 +325,10 @@ def cases_shoulder_rests_filtered_asc():
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
-             WHERE Products.product_type IN ('Case', 'Shoulder_rest')
+            WHERE Products.product_type IN ('Case', 'Shoulder_rest')
             ORDER BY Products.price ASC;"""
     results = query_db(sql)
-    return render_template("cases_shoulder_rests.html", results=results)
+    return render_template("case_shoulder_rests.html", results=results)
 
 @app.route('/cases-shoulder-rest-a-to-z/')
 def cases_shoulder_rests_a_z():
@@ -339,7 +339,7 @@ def cases_shoulder_rests_a_z():
              WHERE Products.product_type IN ('Case', 'Shoulder_rest')
             ORDER BY Products.product_name ASC;"""
     results = query_db(sql)
-    return render_template("cases_shoulder_rest.html", results=results)
+    return render_template("case_shoulder_rest.html", results=results)
 
 
 @app.route('/cases-shoulder-rest-z-to-a/')
@@ -351,7 +351,7 @@ def cases_shoulder_rests_z_a():
              WHERE Products.product_type IN ('Case', 'Shoulder_rest')
             ORDER BY Products.product_name DESC;"""
     results = query_db(sql)
-    return render_template("cases_shoulder_rest.html", results=results)
+    return render_template("case_shoulder_rest.html", results=results)
 
 # Violins page
 @app.route("/violins/")
