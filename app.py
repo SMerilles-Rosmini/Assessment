@@ -30,6 +30,8 @@ def execute_db(query, args=()):
     db.commit()
     cur.close()
 
+# Home page
+
 @app.route('/')
 def home():
     #home page - ID, manufacturer, image URL
@@ -40,7 +42,49 @@ def home():
             ORDER BY LENGTH(Products.product_name) DESC;"""
     results = query_db(sql)
     return render_template("home.html", results=results)
+
+@app.route('/home-high-to-low/')
+def home_filtered_desc():
+    # filter price home page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.price DESC;"""
+    results = query_db(sql)
+    return render_template("home.html", results=results)
+
+@app.route('/home-low-to-high/')
+def home_filtered_asc():
+    # filter price home page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.price ASC;"""
+    results = query_db(sql)
+    return render_template("home.html", results=results)
+
+@app.route('/home-a-to-z/')
+def home_a_z():
+    # filter name home page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.product_name ASC;"""
+    results = query_db(sql)
+    return render_template("home.html", results=results)
+
+
+@app.route('/home-z-to-a/')
+def home_z_a():
+    # filter name home page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.product_name DESC;"""
+    results = query_db(sql)
+    return render_template("home.html", results=results)
   
+# Products page
 
 @app.route("/products/")
 def products():
@@ -93,52 +137,14 @@ def product_z_a():
     results = query_db(sql)
     return render_template("products.html", results=results)
 
-@app.route('/home-high-to-low/')
-def home_filtered_desc():
-    # filter price home page - ID, manufacturer, image url
-    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
-            FROM Products
-            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
-            ORDER BY Products.price DESC;"""
-    results = query_db(sql)
-    return render_template("home.html", results=results)
 
-@app.route('/home-low-to-high/')
-def home_filtered_asc():
-    # filter price home page - ID, manufacturer, image url
-    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
-            FROM Products
-            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
-            ORDER BY Products.price ASC;"""
-    results = query_db(sql)
-    return render_template("home.html", results=results)
-
-@app.route('/home-a-to-z/')
-def home_a_z():
-    # filter name home page - ID, manufacturer, image url
-    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
-            FROM Products
-            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
-            ORDER BY Products.product_name ASC;"""
-    results = query_db(sql)
-    return render_template("home.html", results=results)
-
-
-@app.route('/home-z-to-a/')
-def home_z_a():
-    # filter name home page - ID, manufacturer, image url
-    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
-            FROM Products
-            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
-            ORDER BY Products.product_name DESC;"""
-    results = query_db(sql)
-    return render_template("home.html", results=results)
-
+# About Page
 @app.route("/about/")
 def about():
     #About Page - Just text about the website
     return render_template("about.html")
 
+# indvidual products page
 @app.route("/individual_products/<int:id>")
 def individ_products(id):
     # indivdual products page - ID, manufacturer, image url
@@ -148,6 +154,7 @@ def individ_products(id):
     result = query_db(sql,(id,), True)  
     return render_template("individ_product.html", individ_products=result)
 
+# Cart functions and page
 @app.route("/add_to_cart/<int:id>")
 def add_cart(id):
     # Add to cart function
@@ -174,6 +181,7 @@ def remove_from_cart(id):
     execute_db(sql, (id,))
     return redirect(url_for("cart_view"))
 
+# Rosin page
 @app.route("/rosin/")
 def rosin():
     # Rosin Product page
@@ -184,6 +192,48 @@ def rosin():
     results = query_db(sql)
     return render_template("rosin.html", results=results)
 
+@app.route('/rosin-high-to-low/')
+def rosin_filtered_desc():
+    # filter price rosin page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.price DESC;"""
+    results = query_db(sql)
+    return render_template("rosin.html", results=results)
+
+@app.route('/rosin-low-to-high/')
+def rosin_filtered_asc():
+    # filter price rosin page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.price ASC;"""
+    results = query_db(sql)
+    return render_template("rosin.html", results=results)
+
+@app.route('/rosin-a-to-z/')
+def rosin_a_z():
+    # filter name rosin page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.product_name ASC;"""
+    results = query_db(sql)
+    return render_template("rosin.html", results=results)
+
+
+@app.route('/rosin-z-to-a/')
+def rosin_z_a():
+    # filter name rosin page - ID, manufacturer, image url
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            ORDER BY Products.product_name DESC;"""
+    results = query_db(sql)
+    return render_template("rosin.html", results=results)
+
+# Strings page
 @app.route("/strings/")
 def string():
     # Strings Product Page
