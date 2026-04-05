@@ -18,4 +18,10 @@ JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
 WHERE Products.product_id = ?;
 
 -- Add to Cart Function
-INSERT INTO cart (product_id) VALUES (?)
+INSERT INTO cart (product_id) VALUES (?);
+
+-- Manufacturer filter
+SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+FROM Products
+JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+WHERE Products.manufacturer_id = 1;
