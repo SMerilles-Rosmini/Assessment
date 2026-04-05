@@ -413,20 +413,22 @@ def violins_z_a():
 @app.route('/search', methods=['POST'])
 def search():
     # Search Bar functionality + Search results
-    search_term = f"%{request.form.get('search', '')}%"  
+    search_term_raw = request.form.get('search', '') 
+    search_term = f"%{search_term_raw}%"
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
              FROM Products
              WHERE Products.product_type LIKE ?
              OR Products.product_name LIKE ?
             ORDER BY LENGTH(Products.product_name) DESC;"""
     results = query_db(sql, [search_term, search_term]) 
-    return render_template('search.html', results=results)
+    return render_template('search.html', results=results, current_search = search_term_raw)
 
 
-@app.route('/search-high-to-low/')
+@app.route('/search-high-to-low',  methods=['POST'])
 def search_filtered_desc():
     # filter price search page - ID, manufacturer, image url
-    search_term = f"%{request.form.get('search', '')}%"  
+    search_term_raw = request.form.get('search', '') 
+    search_term = f"%{search_term_raw}%"
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
@@ -434,12 +436,13 @@ def search_filtered_desc():
              OR Products.product_name LIKE ?
             ORDER BY Products.price DESC;"""
     results = query_db(sql,  [search_term, search_term])
-    return render_template("search.html", results=results)
+    return render_template("search.html", results=results, current_search = search_term_raw)
 
-@app.route('/search-low-to-high/')
+@app.route('/search-low-to-high',  methods=['POST'])
 def search_filtered_asc():
     # filter price search page - ID, manufacturer, image url
-    search_term = f"%{request.form.get('search', '')}%"  
+    search_term_raw = request.form.get('search', '') 
+    search_term = f"%{search_term_raw}%"
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
@@ -447,12 +450,13 @@ def search_filtered_asc():
              OR Products.product_name LIKE ?
             ORDER BY Products.price ASC;"""
     results = query_db(sql, [search_term, search_term])
-    return render_template("search.html", results=results)
+    return render_template("search.html", results=results, current_search = search_term_raw)
 
-@app.route('/search-a-to-z/')
+@app.route('/search-a-to-z',  methods=['POST'])
 def search_a_z():
     # filter name search page - ID, manufacturer, image url
-    search_term = f"%{request.form.get('search', '')}%"  
+    search_term_raw = request.form.get('search', '') 
+    search_term = f"%{search_term_raw}%"
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
@@ -460,13 +464,14 @@ def search_a_z():
              OR Products.product_name LIKE ?
             ORDER BY Products.product_name ASC;"""
     results = query_db(sql, [search_term, search_term])
-    return render_template("search.html", results=results)
+    return render_template("search.html", results=results, current_search = search_term_raw)
 
 
-@app.route('/search-z-to-a/')
+@app.route('/search-z-to-a',  methods=['POST'])
 def search_z_a():
     # filter name search page - ID, manufacturer, image url
-    search_term = f"%{request.form.get('search', '')}%"  
+    search_term_raw = request.form.get('search', '') 
+    search_term = f"%{search_term_raw}%" 
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
@@ -474,7 +479,7 @@ def search_z_a():
              OR Products.product_name LIKE ?
             ORDER BY Products.product_name DESC;"""
     results = query_db(sql, [search_term, search_term])
-    return render_template("search.html", results=results)
+    return render_template("search.html", results=results, current_search = search_term_raw)
 
 # Checkout
 @app.route("/checkout_submit/")
