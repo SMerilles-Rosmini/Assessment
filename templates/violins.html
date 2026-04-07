@@ -7,7 +7,26 @@
     <a href="{{url_for('violins_filtered_asc')}}" class="w3-bar-item w3-button button">Price (Low to High)</a>
     <a href="{{url_for('violins_filtered_desc')}}" class="w3-bar-item w3-button button">Price (High to Low)</a>
     <a href="{{url_for('violins_a_z')}}" class="w3-bar-item w3-button button">Product Name (A to Z)</a>
-    <a href="{{url_for('violins_z_a')}}" class="w3-bar-item w3-button button">Product Name (Z to A)</a>  
+    <a href="{{url_for('violins_z_a')}}" class="w3-bar-item w3-button button">Product Name (Z to A)</a>
+    <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-left-align">Manufacturers</button>
+    <div id="Demo1" class="w3-container w3-hide">
+        <a href="{{url_for('violins_cremona')}}" class="w3-bar-item w3-button button">Cremona</a>
+        <a href="{{url_for('violins_AB')}}"class="w3-bar-item w3-button button">AB</a>
+        <a href="{{url_for('violins_daddario')}}" class="w3-bar-item w3-button button">Daddario</a>
+        <a href="{{url_for('violins_core_academy')}}" class="w3-bar-item w3-button button">Core Academy</a>
+        <a href="{{url_for('violins_bam')}}" class="w3-bar-item w3-button button">Bam</a>
+        <a href="{{url_for('violins_anton_breton')}}" class="w3-bar-item w3-button button">Anton Breton</a>
+    </div>
+    <script>
+        function myFunction(id) {
+        var x = document.getElementById(id);
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+        }
+    </script>
 </div>
 
 <div id="main" class="w3-mobile">

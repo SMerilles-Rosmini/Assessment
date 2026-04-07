@@ -733,6 +733,73 @@ def violins_z_a():
     results = query_db(sql)
     return render_template("violins.html", results=results)
 
+@app.route('/violins-cremona/')
+def violins_cremona():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 1
+            AND Products.product_type = 'Violin';"""
+    results = query_db(sql)
+    return render_template("violins.html", results=results)
+
+@app.route('/violins-AB/')
+def violins_AB():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 4
+            AND Products.product_type  = 'Violin';"""
+    results = query_db(sql)
+    return render_template("violins.html", results=results)
+
+@app.route('/violins-daddario/')
+def violins_daddario():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 6
+            AND Products.product_type = 'Violin';"""           
+    results = query_db(sql)
+    return render_template("violins.html", results=results)
+
+@app.route('/violins-Anton-breton/')
+def violins_anton_breton():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 3
+            AND Products.product_type = 'Violin';"""
+    results = query_db(sql)
+    return render_template("violins.html", results=results)
+
+@app.route('/violins-core-academy/')
+def violins_core_academy():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 2
+            AND Products.product_type = 'Violin';"""
+    results = query_db(sql)
+    return render_template("violins.html", results=results)
+
+@app.route('/violins-bam/')
+def violins_bam():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 5
+            AND Products.product_type = 'Violin';"""
+    results = query_db(sql)
+    return render_template("violins.html", results=results)
+
+
 # Search Bar
 @app.route('/search', methods=['POST'])
 def search():
