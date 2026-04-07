@@ -489,6 +489,72 @@ def strings_z_a():
     results = query_db(sql)
     return render_template("strings.html", results=results)
 
+@app.route('/strings-cremona/')
+def strings_cremona():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 1
+            AND Products.product_type = 'String';"""
+    results = query_db(sql)
+    return render_template("strings.html", results=results)
+
+@app.route('/strings-AB/')
+def strings_AB():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 4
+            AND Products.product_type = 'String';"""
+    results = query_db(sql)
+    return render_template("strings.html", results=results)
+
+@app.route('/strings-daddario/')
+def strings_daddario():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 6
+            AND Products.product_type = 'String';"""           
+    results = query_db(sql)
+    return render_template("strings.html", results=results)
+
+@app.route('/strings-Anton-breton/')
+def strings_anton_breton():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 3
+            AND Products.product_type = 'String';"""
+    results = query_db(sql)
+    return render_template("strings.html", results=results)
+
+@app.route('/strings-core-academy/')
+def strings_core_academy():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 2
+            AND Products.product_type = 'String';"""
+    results = query_db(sql)
+    return render_template("strings.html", results=results)
+
+@app.route('/strings-bam/')
+def strings_bam():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 5
+            AND Products.product_type = 'String';"""
+    results = query_db(sql)
+    return render_template("strings.html", results=results)
+
 # Cases and Shoulder rests page
 @app.route("/cases_and_shoulder_rests/")
 def case_and_shoulder_rest():
