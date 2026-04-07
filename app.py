@@ -207,6 +207,66 @@ def product_z_a():
     results = query_db(sql)
     return render_template("products.html", results=results)
 
+@app.route('/product-cremona/')
+def product_cremona():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 1;"""
+    results = query_db(sql)
+    return render_template("products.html", results=results)
+
+@app.route('/product-AB/')
+def product_AB():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 4;"""
+    results = query_db(sql)
+    return render_template("products.html", results=results)
+
+@app.route('/product-daddario/')
+def product_daddario():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 6;"""           
+    results = query_db(sql)
+    return render_template("products.html", results=results)
+
+@app.route('/product-Anton-breton/')
+def product_anton_breton():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 3;"""
+    results = query_db(sql)
+    return render_template("products.html", results=results)
+
+@app.route('/product-core-academy/')
+def product_core_academy():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 2;"""
+    results = query_db(sql)
+    return render_template("products.html", results=results)
+
+@app.route('/product-bam/')
+def product_bam():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 5;"""
+    results = query_db(sql)
+    return render_template("products.html", results=results)
+
 
 # About Page
 @app.route("/about/")
