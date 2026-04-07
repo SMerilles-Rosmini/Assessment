@@ -867,8 +867,93 @@ def search_z_a():
             FROM Products
             JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
             WHERE Products.product_type LIKE ?
-             OR Products.product_name LIKE ?
+            OR Products.product_name LIKE ?
             ORDER BY Products.product_name DESC;"""
+    results = query_db(sql, [search_term, search_term])
+    return render_template("search.html", results=results, current_search = search_term_raw)
+
+
+@app.route('/search-cremona', methods=["POST"])
+def search_cremona():
+    # filter by manufacturer
+    search_term_raw = request.form.get('search', '') 
+    search_term = f"%{search_term_raw}%" 
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 1
+            AND (Products.product_type LIKE ?
+            OR Products.product_name LIKE ?);"""
+    results = query_db(sql, [search_term, search_term])
+    return render_template("search.html", results=results, current_search = search_term_raw)
+
+@app.route('/search-AB', methods=["POST"])
+def search_AB():
+    # filter by manufacturer
+    search_term_raw = request.form.get('search', '') 
+    search_term = f"%{search_term_raw}%" 
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 4
+            AND (Products.product_type LIKE ?
+            OR Products.product_name LIKE ?);"""
+    results = query_db(sql, [search_term, search_term])
+    return render_template("search.html", results=results, current_search = search_term_raw)
+
+@app.route('/search-daddario', methods=["POST"])
+def search_daddario():
+    # filter by manufacturer
+    search_term_raw = request.form.get('search', '') 
+    search_term = f"%{search_term_raw}%" 
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 6
+            AND (Products.product_type LIKE ?
+            OR Products.product_name LIKE ?);"""           
+    results = query_db(sql, [search_term, search_term])
+    return render_template("search.html", results=results, current_search = search_term_raw)
+
+@app.route('/search-anton-breton', methods=["POST"])
+def search_anton_breton():
+    # filter by manufacturer
+    search_term_raw = request.form.get('search', '') 
+    search_term = f"%{search_term_raw}%" 
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 3
+            AND (Products.product_type LIKE ?
+            OR Products.product_name LIKE ?);"""
+    results = query_db(sql, [search_term, search_term])
+    return render_template("search.html", results=results, current_search = search_term_raw)
+
+@app.route('/search-core-academy', methods=["POST"])
+def search_core_academy():
+    # filter by manufacturer
+    search_term_raw = request.form.get('search', '') 
+    search_term = f"%{search_term_raw}%" 
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 2
+            AND (Products.product_type LIKE ?
+            OR Products.product_name LIKE ?);"""
+    results = query_db(sql, [search_term, search_term])
+    return render_template("search.html", results=results, current_search = search_term_raw)
+
+@app.route('/search-bam', methods=["POST"])
+def search_bam():
+    # filter by manufacturer
+    search_term_raw = request.form.get('search', '') 
+    search_term = f"%{search_term_raw}%" 
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 5
+            AND (Products.product_type LIKE ?
+            OR Products.product_name LIKE ?);"""
     results = query_db(sql, [search_term, search_term])
     return render_template("search.html", results=results, current_search = search_term_raw)
 
