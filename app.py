@@ -367,6 +367,72 @@ def rosin_z_a():
     results = query_db(sql)
     return render_template("rosin.html", results=results)
 
+@app.route('/rosin-cremona/')
+def rosin_cremona():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 1
+            AND Products.product_type = 'Rosin';"""
+    results = query_db(sql)
+    return render_template("rosin.html", results=results)
+
+@app.route('/rosin-AB/')
+def rosin_AB():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 4
+            AND Products.product_type = 'Rosin';"""
+    results = query_db(sql)
+    return render_template("rosin.html", results=results)
+
+@app.route('/rosin-daddario/')
+def rosin_daddario():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 6
+            AND Products.product_type = 'Rosin';"""           
+    results = query_db(sql)
+    return render_template("rosin.html", results=results)
+
+@app.route('/rosin-Anton-breton/')
+def rosin_anton_breton():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 3
+            AND Products.product_type = 'Rosin';"""
+    results = query_db(sql)
+    return render_template("rosin.html", results=results)
+
+@app.route('/rosin-core-academy/')
+def rosin_core_academy():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 2
+            AND Products.product_type = 'Rosin';"""
+    results = query_db(sql)
+    return render_template("rosin.html", results=results)
+
+@app.route('/rosin-bam/')
+def rosin_bam():
+    # filter by manufacturer
+    sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
+            FROM Products
+            JOIN manufacturers ON manufacturers.manufacturer_id = Products.manufacturer_id
+            WHERE Products.manufacturer_id = 5
+            AND Products.product_type = 'Rosin';"""
+    results = query_db(sql)
+    return render_template("rosin.html", results=results)
+
 # Strings page
 @app.route("/strings/")
 def string():
