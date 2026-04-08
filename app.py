@@ -569,6 +569,11 @@ def strings_bam():
     results = query_db(sql)
     return render_template("strings.html", results=results)
 
+@app.route('/strings-remove-all-filters/')
+def strings_remove_all_filters():
+    # Should redirect back to the original page
+    return redirect(url_for("string"))
+
 # Cases and Shoulder rests page
 @app.route("/cases_and_shoulder_rests/")
 def case_and_shoulder_rest():
