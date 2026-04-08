@@ -153,6 +153,11 @@ def home_bam():
             AND  Products.product_type IN ('Shoulder_rest', 'String', 'Rosin', 'Case');"""
     results = query_db(sql)
     return render_template("home.html", results=results)
+
+@app.route('/home-remove-all-filters/')
+def home_remove_all_filters():
+    # Should redirect back to the original page
+    return redirect(url_for("home"))
   
 # Products page
 
