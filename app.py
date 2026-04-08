@@ -442,6 +442,11 @@ def rosin_bam():
     results = query_db(sql)
     return render_template("rosin.html", results=results)
 
+@app.route('/rosin-remove-all-filters/')
+def rosin_remove_all_filters():
+    # Should redirect back to the original page
+    return redirect(url_for("rosin"))
+
 # Strings page
 @app.route("/strings/")
 def string():
