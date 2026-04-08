@@ -696,6 +696,12 @@ def cases_shoulder_rests_bam():
     results = query_db(sql)
     return render_template("case_shoulder_rest.html", results=results)
 
+
+@app.route('/cases-shoulder-rests-remove-all-filters/')
+def cases_shoulder_rests_remove_all_filters():
+    # Should redirect back to the original page
+    return redirect(url_for("case_and_shoulder_rest"))
+
 # Violins page
 @app.route("/violins/")
 def violin():
@@ -818,6 +824,10 @@ def violins_bam():
     results = query_db(sql)
     return render_template("violins.html", results=results)
 
+@app.route('/violins-remove-all-filters/')
+def violins_remove_all_filters():
+    # Should redirect back to the original page
+    return redirect(url_for("violin"))
 
 # Search Bar
 @app.route('/search', methods=['POST'])
