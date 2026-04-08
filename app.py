@@ -830,10 +830,13 @@ def violins_remove_all_filters():
     return redirect(url_for("violin"))
 
 # Search Bar
-@app.route('/search', methods=['POST'])
+@app.route('/search', methods=["GET", 'POST'])
 def search():
     # Search Bar functionality + Search results
-    search_term_raw = request.form.get('search', '') 
+    if request.method == "POST":
+        search_term_raw = request.form.get('search', '')
+    else:
+        search_term_raw = request.args.get('current_search', '')    
     search_term = f"%{search_term_raw}%"
     sql = """SELECT Products.product_id, Products.product_name, Products.image_url, Products.price 
              FROM Products
@@ -986,6 +989,11 @@ def search_bam():
     results = query_db(sql, [search_term, search_term])
     return render_template("search.html", results=results, current_search = search_term_raw)
 
+@app.route('/search-remove-all-filters', methods=["GET"])
+def search_remove_all_filters():
+    # Should redirect back to the original page
+    search_term_raw = request.args.get('search', '') 
+    return redirect(url_for("search", current_search = search_term_raw))
 # Checkout
 @app.route("/checkout_submit/")
 def checkout_submit():

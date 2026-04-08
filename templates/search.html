@@ -3,6 +3,7 @@
 {% block body %}
 <!-- Sidebar for filter -->
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-theme" style="display:none" id="mySidebar">   
+  <!-- Links to filter for Price (Ascending and Descending) and Product Names (Ascending and Descending) -->
     <button class="w3-bar-item w3-button button" onclick="w3_close()">Close</button>   
     <form action="/search-low-to-high" method="POST">
       <input type="hidden" name="search" value="{{ current_search }}">
@@ -20,6 +21,7 @@
       <input type="hidden" name="search" value="{{ current_search }}">
       <button type="submit" class="w3-bar-item w3-button button">Product Name (Z to A)</button>
     </form>
+    <!-- Links to filter by manufacturer -->
     <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-left-align">Manufacturers</button>
     <div id="Demo1" class="w3-container w3-hide">        
         <form action="/search-cremona" method="POST">
@@ -57,6 +59,10 @@
         }
         }
     </script>    
+    <form action="/search-remove-all-filters" method="GET">
+      <input type="hidden" name="search" value="{{ current_search }}">
+      <button type="submit" class="w3-bar-item w3-button button">Remove All Filters</button>
+    </form>
 </div>
 
 <div id="main" class="w3-mobile">
