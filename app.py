@@ -272,6 +272,10 @@ def product_bam():
     results = query_db(sql)
     return render_template("products.html", results=results)
 
+@app.route('/product-remove-all-filters/')
+def product_remove_all_filters():
+    # Should redirect back to the original page
+    return redirect(url_for("products"))
 
 # About Page
 @app.route("/about/")
