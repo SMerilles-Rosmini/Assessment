@@ -2,12 +2,14 @@
 
 {% block body %}
 <!-- Sidebar for filter -->
+ <!-- Filter links to filter by price and name (both ascending and descending) -->
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-theme" style="display:none" id="mySidebar">   
     <button class="w3-bar-item w3-button button" onclick="w3_close()">Close</button>
     <a href="{{url_for('strings_filtered_asc')}}" class="w3-bar-item w3-button button">Price (Low to High)</a>
     <a href="{{url_for('strings_filtered_desc')}}" class="w3-bar-item w3-button button">Price (High to Low)</a>
     <a href="{{url_for('strings_a_z')}}" class="w3-bar-item w3-button button">Product Name (A to Z)</a>
-    <a href="{{url_for('strings_z_a')}}" class="w3-bar-item w3-button button">Product Name (Z to A)</a>  
+    <a href="{{url_for('strings_z_a')}}" class="w3-bar-item w3-button button">Product Name (Z to A)</a> 
+     <!--Links to filter by manufacturers  -->
     <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-left-align">Manufacturers</button>
     <div id="Demo1" class="w3-container w3-hide">
         <a href="{{url_for('strings_cremona')}}" class="w3-bar-item w3-button button">Cremona</a>
@@ -17,6 +19,7 @@
         <a href="{{url_for('strings_bam')}}" class="w3-bar-item w3-button button">Bam</a>
         <a href="{{url_for('strings_anton_breton')}}" class="w3-bar-item w3-button button">Anton Breton</a>
     </div>
+    <!-- java script for the accordion to open and close -->
     <script>
         function myFunction(id) {
         var x = document.getElementById(id);
@@ -27,6 +30,7 @@
         }
         }
     </script>
+    <!-- Remove all filters function -->
     <a href="{{url_for('strings_remove_all_filters')}}" class="w3-bar-item w3-button button">Remove All Filters</a>
 </div>
 

@@ -43,6 +43,8 @@ def home():
     results = query_db(sql)
     return render_template("home.html", results=results)
 
+
+# Filter functions
 @app.route('/home-high-to-low/')
 def home_filtered_desc():
     # filter price home page - ID, manufacturer, image url
@@ -171,6 +173,8 @@ def products():
     results = query_db(sql)
     return render_template("products.html", results=results)
 
+
+# Filter functions
 @app.route('/product-high-to-low/')
 def product_filtered_desc():
     # filter price products page - ID, manufacturer, image url
@@ -331,6 +335,8 @@ def rosin():
     results = query_db(sql)
     return render_template("rosin.html", results=results)
 
+
+# Filter functions
 @app.route('/rosin-high-to-low/')
 def rosin_filtered_desc():
     # filter price rosin page - ID, manufacturer, image url
@@ -458,6 +464,8 @@ def string():
     results = query_db(sql)
     return render_template("strings.html", results=results)
 
+
+# Filter functions
 @app.route('/strings-high-to-low/')
 def strings_filtered_desc():
     # filter price strings page - ID, manufacturer, image url
@@ -585,6 +593,8 @@ def case_and_shoulder_rest():
     results = query_db(sql)
     return render_template("case_shoulder_rest.html", results=results)
 
+
+# Filter functions
 @app.route('/cases-shoulder-rests-high-to-low/')
 def cases_shoulder_rests_filtered_desc():
     # filter price cases and shoulder rests page - ID, manufacturer, image url
@@ -713,6 +723,8 @@ def violin():
     results = query_db(sql)
     return render_template("violins.html", results=results)
 
+
+# Filter functions
 @app.route('/violins-high-to-low/')
 def violins_filtered_desc():
     # filter price violins page - ID, manufacturer, image url
@@ -846,7 +858,7 @@ def search():
     results = query_db(sql, [search_term, search_term]) 
     return render_template('search.html', results=results, current_search = search_term_raw)
 
-
+# Filter functions
 @app.route('/search-high-to-low',  methods=['POST'])
 def search_filtered_desc():
     # filter price search page - ID, manufacturer, image url
