@@ -1,5 +1,12 @@
 body,h1,h2,h3,h4,h5,h6 {
     font-family: NewsReader, sans-serif;    
+   
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 /* Customised color scheme from w3.css framework */
 .w3-theme-l5 {color:#000 !important; background-color:#fbeff1 !important}
@@ -37,6 +44,7 @@ header{
     width: 100%;
     min-height: auto;
     z-index: 3;
+    flex-shrink: 0;
 
 }
 
@@ -348,3 +356,12 @@ img{
     padding: 10px 10px 10px 10px;
 }
 
+/* Footer */
+
+main{
+    flex:1;
+}
+
+footer{
+    margin-top: auto;
+}
