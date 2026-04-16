@@ -364,4 +364,11 @@ main{
 
 footer{
     margin-top: auto;
+    background-color: #6c1825;
+    color:white;    
+    bottom: 0;
+    width: 100%;
+    min-height: auto;
+    z-index: 3;
+    flex-shrink: 0;
 }
