@@ -1,3 +1,12 @@
+/* ====================================
+Styles sheet for the e-commerce website
+File: main.css
+Name: Szymon Merilles
+Date: March 2026
+======================================*/
+
+/* Styling for the whole page */
+
 body,h1,h2,h3,h4,h5,h6 {
     font-family: NewsReader, sans-serif;    
    
@@ -8,7 +17,9 @@ body{
     display: flex;
     flex-direction: column;
 }
+
 /* Customised color scheme from w3.css framework */
+
 .w3-theme-l5 {color:#000 !important; background-color:#fbeff1 !important}
 .w3-theme-l4 {color:#000 !important; background-color:#f3cbd1 !important}
 .w3-theme-l3 {color:#000 !important; background-color:#e796a2 !important}
@@ -36,6 +47,7 @@ body{
 
 
 /* Header and Navbar */
+
 header{
     background-color: #6c1825;
     color:white;
@@ -140,6 +152,7 @@ img{
 }
 
 /* Home page */
+
 .product-header{
     padding: 10px 10px 10px 10px;
     margin: 10px 10px 10px 10px;
@@ -186,6 +199,7 @@ img{
 }
 
 /* About Page */
+
 .about-header{
     padding: 10px 10px 10px 10px;
     text-align: center;    
@@ -263,6 +277,7 @@ img{
 }
 
 /* Cart page */
+
 .cart-heading{
     padding: 10px 10px 10px 10px;
     margin: 10px 10px 10px 10px;
@@ -310,6 +325,7 @@ img{
 }
 
 /* Search bar */
+
 .search{
    width: 40%;  
    min-width: 700px;
@@ -317,6 +333,7 @@ img{
 }
 
 /* Thank you Page */
+
 .heading{
     padding: 10px 10px 10px 10px;
     margin: 10px 10px 10px 10px;
@@ -344,12 +361,14 @@ img{
 
 
 /* Payment Page */
+
 .total_price{
     padding: 10px 10px 10px 10px;
     margin: 10px 10px 10px 10px;
 }
 
 /* Filter Button */
+
 .filter-button{
     margin-top:0px;
     margin-left:10px;
