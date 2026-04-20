@@ -29,8 +29,8 @@ Search results page for the website
       <button type="submit" class="w3-bar-item w3-button button">Product Name (Z to A)</button>
     </form>
     <!-- Links to filter by manufacturer -->
-    <button onclick="accordion_functions('Demo1')" class="w3-button w3-block w3-left-align">Manufacturers</button>
-    <div id="Demo1" class="w3-container w3-hide">        
+    <button onclick="accordion_functions('accordion')" class="w3-button w3-block w3-left-align">Manufacturers</button>
+    <div id="accordion" class="w3-container w3-hide">        
         <form action="/search-cremona" method="POST">
           <input type="hidden" name="search" value="{{ current_search }}">
           <button type="submit" class="w3-bar-item w3-button button">Cremona</button>
