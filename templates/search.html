@@ -29,7 +29,7 @@ Search results page for the website
       <button type="submit" class="w3-bar-item w3-button button">Product Name (Z to A)</button>
     </form>
     <!-- Links to filter by manufacturer -->
-    <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-left-align">Manufacturers</button>
+    <button onclick="accordion_functions('Demo1')" class="w3-button w3-block w3-left-align">Manufacturers</button>
     <div id="Demo1" class="w3-container w3-hide">        
         <form action="/search-cremona" method="POST">
           <input type="hidden" name="search" value="{{ current_search }}">
@@ -57,7 +57,7 @@ Search results page for the website
         </form>
     </div>
     <script>
-        function myFunction(id) {
+        function accordion_functions(id) {
         var x = document.getElementById(id);
         if (x.className.indexOf("w3-show") == -1) {
             x.className += " w3-show";

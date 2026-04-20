@@ -17,7 +17,7 @@ Rosin page for the website
     <a href="{{url_for('rosin_a_z')}}" class="w3-bar-item w3-button button">Product Name (A to Z)</a>
     <a href="{{url_for('rosin_z_a')}}" class="w3-bar-item w3-button button">Product Name (Z to A)</a>  
     <!-- Accordion to filter by manufacturer -->
-    <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-left-align">Manufacturers</button>
+    <button onclick="accordion_functions('Demo1')" class="w3-button w3-block w3-left-align">Manufacturers</button>
     <div id="Demo1" class="w3-container w3-hide">
         <a href="{{url_for('rosin_cremona')}}" class="w3-bar-item w3-button button">Cremona</a>
         <a href="{{url_for('rosin_AB')}}"class="w3-bar-item w3-button button">AB</a>
@@ -28,7 +28,7 @@ Rosin page for the website
     </div>
     <!-- Java script to open and close the accordion -->
     <script>
-        function myFunction(id) {
+        function accordion_functions(id) {
         var x = document.getElementById(id);
         if (x.className.indexOf("w3-show") == -1) {
             x.className += " w3-show";
