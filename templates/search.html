@@ -10,7 +10,7 @@ Search results page for the website
 {% block body %}
 <!-- Sidebar for filter -->
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-theme" style="display:none" id="mySidebar">   
-  <!-- Links to filter for Price (Ascending and Descending) and Product Names (Ascending and Descending) -->
+   <!--Links to filter product name and price (both descending and ascending filter buttons)  -->
     <button class="w3-bar-item w3-button button" onclick="w3_close()">Close</button>   
     <form action="/search-low-to-high" method="POST">
       <input type="hidden" name="search" value="{{ current_search }}">

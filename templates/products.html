@@ -9,7 +9,7 @@
 <!-- Products page -->
 {% block body %}
 <!-- Sidebar for filter -->
- <!-- Filter links for the Price and product name (ascending and descending) -->
+  <!--Links to filter product name and price (both descending and ascending filter buttons)  -->
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-theme" style="display:none" id="mySidebar">   
     <button class="w3-bar-item w3-button button" onclick="w3_close()">Close</button>
     <a href="{{url_for('product_filtered_asc')}}" class="w3-bar-item w3-button button">Price (Low to High)</a>

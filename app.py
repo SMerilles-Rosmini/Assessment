@@ -45,6 +45,7 @@ def home():
 
 
 # Filter functions
+
 @app.route('/home-high-to-low/')
 def home_filtered_desc():
     # filter price home page - ID, manufacturer, image url
@@ -175,6 +176,7 @@ def products():
 
 
 # Filter functions
+
 @app.route('/product-high-to-low/')
 def product_filtered_desc():
     # filter price products page - ID, manufacturer, image url
@@ -282,12 +284,14 @@ def product_remove_all_filters():
     return redirect(url_for("products"))
 
 # About Page
+
 @app.route("/about/")
 def about():
     #About Page - Just text about the website
     return render_template("about.html")
 
 # indvidual products page
+
 @app.route("/individual_products/<int:id>")
 def individ_products(id):
     # indivdual products page - ID, manufacturer, image url
@@ -298,6 +302,7 @@ def individ_products(id):
     return render_template("individ_product.html", individ_products=result)
 
 # Cart functions and page
+
 @app.route("/add_to_cart/<int:id>")
 def add_cart(id):
     # Add to cart function
@@ -325,6 +330,7 @@ def remove_from_cart(id):
     return redirect(url_for("cart_view"))
 
 # Rosin page
+
 @app.route("/rosin/")
 def rosin():
     # Rosin Product page
@@ -337,6 +343,7 @@ def rosin():
 
 
 # Filter functions
+
 @app.route('/rosin-high-to-low/')
 def rosin_filtered_desc():
     # filter price rosin page - ID, manufacturer, image url
@@ -454,6 +461,7 @@ def rosin_remove_all_filters():
     return redirect(url_for("rosin"))
 
 # Strings page
+
 @app.route("/strings/")
 def string():
     # Strings Product Page
@@ -466,6 +474,7 @@ def string():
 
 
 # Filter functions
+
 @app.route('/strings-high-to-low/')
 def strings_filtered_desc():
     # filter price strings page - ID, manufacturer, image url
@@ -583,6 +592,7 @@ def strings_remove_all_filters():
     return redirect(url_for("string"))
 
 # Cases and Shoulder rests page
+
 @app.route("/cases_and_shoulder_rests/")
 def case_and_shoulder_rest():
     # Strings Product Page
@@ -595,6 +605,7 @@ def case_and_shoulder_rest():
 
 
 # Filter functions
+
 @app.route('/cases-shoulder-rests-high-to-low/')
 def cases_shoulder_rests_filtered_desc():
     # filter price cases and shoulder rests page - ID, manufacturer, image url
@@ -713,6 +724,7 @@ def cases_shoulder_rests_remove_all_filters():
     return redirect(url_for("case_and_shoulder_rest"))
 
 # Violins page
+
 @app.route("/violins/")
 def violin():
     # Strings Product Page
@@ -725,6 +737,7 @@ def violin():
 
 
 # Filter functions
+
 @app.route('/violins-high-to-low/')
 def violins_filtered_desc():
     # filter price violins page - ID, manufacturer, image url
@@ -842,6 +855,7 @@ def violins_remove_all_filters():
     return redirect(url_for("violin"))
 
 # Search Bar
+
 @app.route('/search', methods=["GET", 'POST'])
 def search():
     # Search Bar functionality + Search results
@@ -859,6 +873,7 @@ def search():
     return render_template('search.html', results=results, current_search = search_term_raw)
 
 # Filter functions
+
 @app.route('/search-high-to-low',  methods=['POST'])
 def search_filtered_desc():
     # filter price search page - ID, manufacturer, image url
@@ -1006,7 +1021,9 @@ def search_remove_all_filters():
     # Should redirect back to the original page
     search_term_raw = request.args.get('search', '') 
     return redirect(url_for("search", current_search = search_term_raw))
+
 # Checkout
+
 @app.route("/checkout_submit/")
 def checkout_submit():
     # Submit shipping address function
@@ -1018,6 +1035,7 @@ def checkout():
     return render_template('checkout.html')
 
 # Payment
+
 @app.route("/payment/")
 def payment():
     # Payment Function
@@ -1030,11 +1048,14 @@ def payment():
     return render_template('payment.html', total=total)
 
 # Thank you page
+
 @app.route("/thank_you/")
 def thanks():
     # A Page that says thank you for purchasing
     return render_template("thanks.html")
+
 # Payment submit
+
 @app.route("/payment_submit/")
 def payment_submit():
     # Payment submit Function
