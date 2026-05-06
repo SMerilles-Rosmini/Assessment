@@ -18,7 +18,7 @@ body{
     flex-direction: column;
 }
 
-/* Customised color scheme from w3.css framework */
+/* Customised color scheme from w3.css framework - W3.CSS color genrator*/
 
 .w3-theme-l5 {color:#000 !important; background-color:#fbeff1 !important}
 .w3-theme-l4 {color:#000 !important; background-color:#f3cbd1 !important}
