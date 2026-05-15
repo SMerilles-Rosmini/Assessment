@@ -381,13 +381,20 @@ img{
     padding: 10px 10px 10px 10px;
 }
 
+/* Filter Sidebar */
+.sidebar{
+    height:calc(100vh - 9rem);     
+    overflow-y: scroll;
+    width: 250px;
+    z-index: 4;
+}
 /* Footer */
 
 main{
     flex:1;
 }
 
-footer{
+footer{    
     margin-top: auto;
     background-color: #6c1825;
     color:white;    
